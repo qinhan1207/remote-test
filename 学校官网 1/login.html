@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录注册页面</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        form {
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form id="login-form">
+        <h2>登录</h2>
+        <input type="text" id="username" placeholder="用户名" required>
+        <input type="password" id="password" placeholder="密码" required>
+        <input type="submit" value="登录">
+        <p>还没有账号？<a href="#" onclick="showRegisterForm()">点击这里注册</a></p>
+    </form>
+
+    <form id="register-form" style="display: none;">
+        <h2>注册</h2>
+        <input type="text" id="new-username" placeholder="新用户名" required>
+        <input type="password" id="new-password" placeholder="新密码" required>
+        <input type="submit" value="注册">
+        <p>已有账号？<a href="#" onclick="showLoginForm()">点击这里登录</a></p>
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        function showRegisterForm() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+            
+        }
+
+        function showLoginForm() {
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        }
+
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            // 这里可以添加登录逻辑，比如发送 AJAX 请求到后端验证用户名和密码
+            document.getElementById('message').innerHTML = '登录成功！';
+            // 实现页面跳转，这里假设跳转到另一个页面
+            window.location.href = 'index.html';
+        });
+
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var newUsername = document.getElementById('new-username').value;
+            var newPassword = document.getElementById('new-password').value;
+            // 这里可以添加注册逻辑，比如发送 AJAX 请求到后端将新用户信息保存
+            // document.getElementById('message').innerHTML = '注册成功！';
+            alert("注册成功")
+            console.log(newUsername);
+            console.log(newPassword);
+        });
+    </script>
+</body>
+</html>
